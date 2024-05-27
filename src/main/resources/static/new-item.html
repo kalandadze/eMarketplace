@@ -7,6 +7,26 @@
     <title>Title</title>
 </head>
 <body>
+    <header>
+        <div onclick="window.location='http://localhost:8080'" id="logo">eMarketplace</div>
+    </header>
+    <main>
+        <form action="http://localhost:8080/market" method="post" enctype="multipart/form-data">
+            <label for="name">Title:</label><br>
+            <input required type="text" maxlength="30" id="name" name="name"><br>
+
+            <label for="price">Price:</label><br>
+            <input required type="number" step=".01" id="price" name="price"><br>
+
+            <label for="photo">Photo:</label><br>
+            <input required type="file" id="photo" name="photo" accept=".jpg"><br>
+
+            <label for="description">Description:</label><br>
+            <textarea required id="description" maxlength="290" name="description"></textarea><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </main>
 
 </body>
 </html>

@@ -1,4 +1,3 @@
-/* Basic styling for the entire page */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +5,6 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Header styles */
 header {
     display: flex;
     justify-content: space-between;
@@ -30,7 +28,6 @@ header {
     border-radius: 5px;
 }
 
-/* Item styles */
 .item {
     background-color: #fff;
     border: 1px solid #ddd;

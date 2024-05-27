@@ -2,12 +2,14 @@ package com.example.eMarketplace.controller;
 
 import com.example.eMarketplace.model.Listing;
 import com.example.eMarketplace.service.MarketService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 
@@ -45,7 +47,8 @@ public class MarketController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<?> addListing(@RequestParam("photo") MultipartFile photo, @RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("description") String description) {
+    public ResponseEntity<?> addListing(@RequestParam("photo") MultipartFile photo, @RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("description") String description,
+                                        HttpServletResponse response) {
         try {
             service.addListing(Listing.builder()
                     .description(description)
@@ -53,6 +56,7 @@ public class MarketController {
                     .name(name)
                     .price(price)
                     .build(), photo);
+            response.sendRedirect("http://localhost:8080");
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
