@@ -6,7 +6,19 @@
     <link rel="stylesheet" type="text/css" href="css/item.css">
     <title>Title</title>
 </head>
-<body>
-
+<body onload="setup()">
+    <header>
+        <div id="logo"  onclick="window.location='http://localhost:8080'">eMarketplace</div>
+        <button id="addListing">New</button>
+    </header>
+    <main>
+        <div class="item">
+            <img id="image" src="" alt="Item Image">
+            <p id="name" class="name"></p>
+            <p id="price" class="price"></p>
+            <p id="date" class="date"></p>
+            <p id="description" class="description"></p>
+        </div>
+    </main>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <script src="js/index.js"></script>
@@ -7,49 +8,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eMarketplace</title>
 </head>
-<body>
-<header>
-    <div id="logo">eMarketplace</div>
-    <button id="addListing">New</button>
-</header>
-<main>
-    <div class="listings-container">
-        <div class="listing">
-            <img id="image1" src="" alt="Item Image">
-            <p id="name1" class="name"></p>
-            <p id="price1" class="price"></p>
+
+<body onload="setUp()">
+    <header>
+        <div id="logo" onclick="window.location='http://localhost:8080'">eMarketplace</div>
+        <button id="addListing">New</button>
+    </header>
+    <main>
+        <div class="listings-container">
+            <div id="listing1" class="listing">
+                <img id="image1" src="" alt="Item Image">
+                <p id="name1" class="name"></p>
+                <p id="price1" class="price"></p>
+            </div>
+            <div id="listing2" class="listing">
+                <img id="image2" src="" alt="Item Image">
+                <p id="name2" class="name"></p>
+                <p id="price2" class="price"></p>
+            </div>
+            <div id="listing3" class="listing">
+                <img id="image3" src="" alt="Item Image">
+                <p id="name3" class="name"></p>
+                <p id="price3" class="price"></p>
+            </div>
+            <div id="listing4" class="listing">
+                <img id="image4" src="" alt="Item Image">
+                <p id="name4" class="name"></p>
+                <p id="price4" class="price"></p>
+            </div>
+            <div id="listing5" class="listing">
+                <img id="image5" src="" alt="Item Image">
+                <p id="name5" class="name"></p>
+                <p id="price5" class="price"></p>
+            </div>
+            <div id="listing6" class="listing">
+                <img id="image6" src="" alt="Item Image">
+                <p id="name6" class="name"></p>
+                <p id="price6" class="price"></p>
+            </div>
         </div>
-        <div class="listing">
-            <img id="image2" src="" alt="Item Image">
-            <p id="name2" class="name"></p>
-            <p id="price2" class="price"></p>
+        <div class="pagination-controls">
+            <button id="previous" class="disabled" onclick="goToPreviousPage()">❮</button>
+            <span id="pageNum">1</span>
+            <button id="next" onclick="goToNextPage()">❯</button>
         </div>
-        <div class="listing">
-            <img id="image3" src="" alt="Item Image">
-            <p id="name3" class="name"></p>
-            <p id="price3" class="price"></p>
-        </div>
-        <div class="listing">
-            <img id="image4" src="" alt="Item Image">
-            <p id="name4" class="name"></p>
-            <p id="price4" class="price"></p>
-        </div>
-        <div class="listing">
-            <img id="image5" src="" alt="Item Image">
-            <p id="name5" class="name"></p>
-            <p id="price5" class="price"></p>
-        </div>
-        <div class="listing">
-            <img id="image6" src="" alt="Item Image">
-            <p id="name6" class="name"></p>
-            <p id="price6" class="price"></p>
-        </div>
-    </div>
-    <div class="pagination-controls">
-        <button class="disabled" onclick="goToPreviousPage()">❮</button>
-        <span>1</span>
-        <button onclick="goToNextPage()">❯</button>
-    </div>
-</main>
+    </main>
 </body>
+
 </html>
