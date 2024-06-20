@@ -5,6 +5,9 @@ function setup() {
 
     var image = document.getElementById("image");
     image.src=item.photoUrl;
+    
+    var user = document.getElementById("email");
+    user.textContent=item.user.email;
 
     var name = document.getElementById("name");
     name.textContent=item.name;

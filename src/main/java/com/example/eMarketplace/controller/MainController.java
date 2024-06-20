@@ -11,7 +11,7 @@ public class MainController {
 
     @GetMapping
     public ModelAndView homePage() {
-        return new ModelAndView("forward:/index.html");
+        return new ModelAndView("forward:/main.html");
     }
 
 }

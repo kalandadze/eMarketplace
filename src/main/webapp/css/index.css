@@ -24,6 +24,11 @@ header {
     cursor: pointer;
     border-radius: 5px;
 }
+#exit{
+    width:17px;
+    cursor: pointer;
+    margin-bottom:-3px;
+}
 .listings-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

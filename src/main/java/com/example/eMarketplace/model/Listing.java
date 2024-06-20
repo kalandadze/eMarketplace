@@ -25,4 +25,7 @@ public class Listing {
     private Date submissionTime;
     @Column(name = "photo_url")
     private String photoUrl;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

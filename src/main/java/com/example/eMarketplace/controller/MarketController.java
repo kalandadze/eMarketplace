@@ -34,6 +34,50 @@ public class MarketController {
         }
     }
 
+    @GetMapping("/DateDesc")
+    @ResponseBody
+    public ResponseEntity<?> getAllListingsOnPageByDateDescending(@RequestParam("page") int page) {
+        try {
+            val response = service.getListingsOnPageByDateDescending(page);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/DateAsc")
+    @ResponseBody
+    public ResponseEntity<?> getAllListingsOnPageByDateAscending(@RequestParam("page") int page) {
+        try {
+            val response = service.getListingsOnPageByDateAscending(page);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/PriceDesc")
+    @ResponseBody
+    public ResponseEntity<?> getAllListingsOnPageByPriceDescending(@RequestParam("page") int page) {
+        try {
+            val response = service.getListingsOnPageByPriceDescending(page);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/PriceAsc")
+    @ResponseBody
+    public ResponseEntity<?> getAllListingsOnPageByPriceAscending(@RequestParam("page") int page) {
+        try {
+            val response = service.getListingsOnPageByPriceAscending(page);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
     @GetMapping("/{name}")
     @ResponseBody
     public ResponseEntity<?> getListingByName(@PathVariable("name") String name) {
@@ -48,14 +92,14 @@ public class MarketController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<?> addListing(@RequestParam("photo") MultipartFile photo, @RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("description") String description,
-                                        HttpServletResponse response) {
+                                        HttpServletResponse response, @RequestParam("email") String email) {
         try {
             service.addListing(Listing.builder()
                     .description(description)
                     .submissionTime(new Date())
                     .name(name)
                     .price(price)
-                    .build(), photo);
+                    .build(), photo, email);
             response.sendRedirect("http://localhost:8080");
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (Exception e) {

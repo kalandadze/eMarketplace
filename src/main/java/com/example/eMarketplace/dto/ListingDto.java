@@ -1,5 +1,6 @@
 package com.example.eMarketplace.dto;
 
+import com.example.eMarketplace.model.User;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,4 +14,5 @@ public class ListingDto {
     private String description;
     private Date submissionTime;
     private String photoUrl;
+    private UserDto user;
 }
