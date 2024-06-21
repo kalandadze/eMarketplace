@@ -8,11 +8,10 @@
 </head>
 <body>
     <header>
-        <div onclick="window.location='http://localhost:8080'" id="logo">eMarketplace</div>
+        <div onclick="window.location='http://localhost:8080/index.html'" id="logo">eMarketplace</div>
     </header>
     <main>
-        <form action="http://localhost:8080/market" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="email" value="" />   
+        <form>
             <label for="name">Title:</label><br>
             <input required type="text" maxlength="30" id="name" name="name"><br>
 
@@ -25,7 +24,7 @@
             <label for="description">Description:</label><br>
             <textarea required id="description" maxlength="290" name="description"></textarea><br>
 
-            <input type="submit" value="Submit">
+            <input type="button" onclick="addListing()" value="Submit">
         </form>
     </main>
 

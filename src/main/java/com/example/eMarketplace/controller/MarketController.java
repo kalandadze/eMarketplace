@@ -2,25 +2,25 @@ package com.example.eMarketplace.controller;
 
 import com.example.eMarketplace.model.Listing;
 import com.example.eMarketplace.service.MarketService;
+import com.example.eMarketplace.util.JwtUtils;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 
 @RestController
 @RequestMapping("/market")
 public class MarketController {
-    MarketService service;
+    private final MarketService service;
+    private final JwtUtils jwtUtils;
 
-    @Autowired
-    public MarketController(MarketService service) {
+    public MarketController(MarketService service, JwtUtils utils) {
         this.service = service;
+        this.jwtUtils = utils;
     }
 
     @GetMapping
@@ -91,15 +91,15 @@ public class MarketController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<?> addListing(@RequestParam("photo") MultipartFile photo, @RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("description") String description,
-                                        HttpServletResponse response, @RequestParam("email") String email) {
+    public ResponseEntity<?> addListing(@RequestHeader("Authorization") String token, @RequestParam("photo") MultipartFile photo, @RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("description") String description, HttpServletResponse response) {
         try {
-            service.addListing(Listing.builder()
-                    .description(description)
-                    .submissionTime(new Date())
-                    .name(name)
-                    .price(price)
-                    .build(), photo, email);
+            String email = jwtUtils.getEmailFromToken(token.replace(jwtUtils.JWT_PREFIX, ""));
+            service.addListing(Listing.builder().description(description)
+                            .submissionTime(new Date())
+                            .name(name)
+                            .price(price)
+                            .build(),
+                    photo, email);
             response.sendRedirect("http://localhost:8080");
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (Exception e) {

@@ -43,7 +43,7 @@ form input[type="file"]::file-selector-button {
     margin-left: 5px;
 }
 
-form input[type="submit"] {
+form input[type="button"] {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -52,6 +52,6 @@ form input[type="submit"] {
     border-radius: 5px;
 }
 
-form input[type="submit"]:hover {
+form input[type="button"]:hover {
     background-color: #0056b3;
 }

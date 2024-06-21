@@ -15,6 +15,19 @@
         <button onclick="window.location='http://localhost:8080/login.html'" id="login">Log In</button>
     </header>
     <main>
+        <div id="info">
+            <p id="numberOfListings"></p>
+
+            <div>
+                <label for="sort">Sort by:</label>
+                <select onchange="sort()" name="sort" id="sort">
+                    <option selected value="DateDesc">Date Desc</option>
+                    <option value="DateAsc">Date Asc</option>
+                    <option value="PriceDesc">Price Desc</option>
+                    <option value="PriceAsc">Price Asc</option>
+                </select>
+            </div>
+        </div>
         <div class="listings-container">
             <div id="listing1" class="listing">
                 <img id="image1" src="" alt="Item Image">

@@ -8,12 +8,12 @@
 </head>
 <body onload="setup()">
     <header>
-        <div id="logo"  onclick="window.location='http://localhost:8080'">eMarketplace</div>
-        <button onclick="window.location='http://localhost:8080/new-item.html'" id="addListing">New</button>
+        <div id="logo"  onclick="window.history.back()">eMarketplace</div>
     </header>
     <main>
         <div class="item">
             <img id="image" src="" alt="Item Image">
+            <br>
             <div class="row">
                 <p id="name" class="name">asd</p> 
                 <p id="price" class="price">asda$</p>
@@ -22,6 +22,7 @@
                 <p id="date" class="date">adsad</p>
                 <p id="email" class="date">adsdfsdfsad</p>
             </div>
+            <hr>
             <p id="description" class="description">sadad</p>
         </div>
     </main>

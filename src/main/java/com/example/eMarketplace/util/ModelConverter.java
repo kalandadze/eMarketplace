@@ -11,9 +11,10 @@ import java.util.List;
 
 @Component
 public class ModelConverter {
-    public ListingCollectionDto covert(List<Listing> listings) {
+    public ListingCollectionDto covert(List<Listing> listings, int size) {
         return ListingCollectionDto.builder()
                 .listingCollection(listings.stream().map(this::convert).toList())
+                .numberOfListings(size)
                 .build();
     }
     public ListingDto convert(Listing listing){

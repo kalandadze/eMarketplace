@@ -9,4 +9,5 @@ import java.util.List;
 @Builder
 public class ListingCollectionDto {
     private List<ListingDto> listingCollection;
+    private int numberOfListings;
 }

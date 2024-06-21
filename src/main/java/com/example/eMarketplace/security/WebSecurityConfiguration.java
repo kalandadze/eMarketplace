@@ -37,7 +37,7 @@ public class WebSecurityConfiguration {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers(HttpMethod.GET, "/", "/*.html", "/js/*.js", "/css/*.css", "/*-photo.jpg")
+                        .requestMatchers(HttpMethod.GET, "/", "/*.html", "/js/*.js", "/css/*.css", "/*-photo.jpg", "/*.png")
                         .permitAll()
                         .requestMatchers(HttpMethod.GET, "/market", "/market/*")
                         .permitAll()

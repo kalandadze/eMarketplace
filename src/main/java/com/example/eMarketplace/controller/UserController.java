@@ -41,7 +41,7 @@ public class UserController {
         try {
             var token = service.login(email, password);
             response.addHeader(utils.JWT_HEADER, utils.JWT_PREFIX + token);
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.getUserByEmail(email).getUsername());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

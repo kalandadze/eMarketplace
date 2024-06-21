@@ -49,7 +49,7 @@ public class MarketService {
     public ListingCollectionDto getListingsOnPage(int page) {
         Pageable pageable = PageRequest.of(page, 6);
         val listings = repository.findAll(pageable).stream().toList();
-        return converter.covert(listings);
+        return converter.covert(listings, repository.findAll().size());
     }
 
     public void addListing(Listing listing, MultipartFile file, String email) {
@@ -72,24 +72,24 @@ public class MarketService {
     public ListingCollectionDto getListingsOnPageByPriceAscending(int page) {
         Pageable pageable = PageRequest.of(page, 6, Sort.by("price").ascending());
         val listings = repository.findAll(pageable).stream().toList();
-        return converter.covert(listings);
+        return converter.covert(listings,repository.findAll().size());
     }
 
     public ListingCollectionDto getListingsOnPageByPriceDescending(int page) {
         Pageable pageable = PageRequest.of(page, 6, Sort.by("price").descending());
         val listings = repository.findAll(pageable).stream().toList();
-        return converter.covert(listings);
+        return converter.covert(listings, repository.findAll().size());
     }
 
     public ListingCollectionDto getListingsOnPageByDateAscending(int page) {
         Pageable pageable = PageRequest.of(page, 6, Sort.by("submissionTime").ascending());
         val listings = repository.findAll(pageable).stream().toList();
-        return converter.covert(listings);
+        return converter.covert(listings, repository.findAll().size());
     }
 
     public ListingCollectionDto getListingsOnPageByDateDescending(int page) {
         Pageable pageable = PageRequest.of(page, 6, Sort.by("submissionTime").descending());
         val listings = repository.findAll(pageable).stream().toList();
-        return converter.covert(listings);
+        return converter.covert(listings, repository.findAll().size());
     }
 }
