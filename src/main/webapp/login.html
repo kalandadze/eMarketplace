@@ -9,9 +9,9 @@
     <title>login</title>
 </head>
 
-<body>
+<body onload="setUp()">
     <header>
-        <div id="logo" onclick="window.location='http://localhost:8080'">eMarketplace</div>
+        <div id="logo">eMarketplace</div>
     </header>
     <main>
         <form>
@@ -25,7 +25,7 @@
             
             <input type="button" onclick="login()" value="Log In">
             <hr>
-            <input type="button" onclick="window.location='http://localhost:8080/register.html'" value="Register">
+            <input type="button" id="register-button" value="Register">
         </form>
     </main>
 </body>

@@ -1,6 +1,5 @@
 package com.example.eMarketplace.service;
 
-import com.example.eMarketplace.dto.UserDto;
 import com.example.eMarketplace.model.User;
 import com.example.eMarketplace.repository.UserRepository;
 import com.example.eMarketplace.service.exeption.*;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.Date;
 
 @Service

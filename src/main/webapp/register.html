@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
-<body>
+<body onload="setUp()">
 <header>
-    <div id="logo" onclick="window.location='http://localhost:8080'">eMarketplace</div>
+    <div id="logo">eMarketplace</div>
 </header>
 <main>
     
@@ -35,7 +35,7 @@
             
         <input type="button" onclick="register()" value="Register">
         <hr>
-        <input type="button" onclick="window.location='http://localhost:8080/login.html'" value="Log In">
+        <input type="button" id="login-button" value="Log In">
     </form>
 </div>
 </main>

@@ -1,3 +1,7 @@
+const ip =window.location.host.replace(":8080","")
+function setUp(){
+  document.getElementById("logo").onclick=function () {window.location=`http://${ip}:8080/index.html`};
+}
 async function addListing() {
   const nameInput = document.getElementById('name');
   const priceInput = document.getElementById('price');
@@ -18,14 +22,16 @@ async function addListing() {
   const headers = new Headers({
     'Authorization': sessionStorage.getItem("token"),
   });
-  const response = await fetch('http://localhost:8080/market', {
+  // const response = await fetch('http://localhost:8080/market', {
+  const response = await fetch(`http://${ip}:8080/market`, {
     method: 'POST',
     headers,
     body: formData,
   });
 
   if (response.ok) {
-    window.location = 'http://localhost:8080/index.html'
+    // window.location = 'http://localhost:8080/index.html'
+    window.location = `http://${ip}:8080/index.html`;
   } else {
     alert('Error submitting form:', await response.text());
   }

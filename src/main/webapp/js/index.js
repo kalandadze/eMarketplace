@@ -1,3 +1,4 @@
+const ip =window.location.host.replace(":8080","")
 function setUp() {
     sessionStorage.setItem("sortAs", "DateDesc");
     loadPage();
@@ -12,14 +13,24 @@ function loggedSetUp(){
 function logout(){
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("token");
-    window.location='http://localhost:8080'
+    // window.location='http://localhost:8080'
+    window.location=`http://${ip}:8080`;
 }
 
 async function loadPage() {
     var page = document.getElementById("pageNum").textContent;
+    try {
+        document.getElementById("exit").src=`http://${ip}:8080/exit.png`;
+        document.getElementById("addListing").onclick=function () {window.location=`http://${ip}:8080/new-item.html`};
+        document.getElementById("logo").onclick=function () {window.location=`http://${ip}:8080/index.html`};
+    }catch (e){
+        document.getElementById("logo").onclick=function () {window.location=`http://${ip}:8080/main.html`};
+        document.getElementById("login").onclick=function () {window.location=`http://${ip}:8080/login.html`};
+    }
     page = parseInt(page) - 1;
     paginationButtons(page);
-    var url = "http://localhost:8080/market/"+sessionStorage.getItem("sortAs")+"?page=" + page;
+    // var url = "http://localhost:8080/market/"+sessionStorage.getItem("sortAs")+"?page=" + page;
+    var url = `http://${ip}:8080/market/`+sessionStorage.getItem("sortAs")+"?page=" +page;
     var response = await fetch(url, { method: "GET" });
     const listings = await response.json();
     document.getElementById("numberOfListings").textContent=listings.numberOfListings+" items in total";
@@ -41,7 +52,8 @@ async function paginationButtons(page) {
         previous.className = "";
     }
 
-    var url = "http://localhost:8080/market?page=" + (page + 1);
+    // var url = "http://localhost:8080/market?page=" + (page + 1);
+    var url = `http://${ip}:8080/market?page=` + (page + 1);
     console.log(url);
     var response = await fetch(url, { method: "GET" });
     const listings = await response.json();
@@ -56,7 +68,6 @@ async function paginationButtons(page) {
 }
 
 function loadListing(listing, index) {
-    console.log(listing);
     var image = document.getElementById("image" + index);
     image.src = listing.photoUrl;
 
@@ -91,7 +102,8 @@ function celarListing(index) {
 function openItemPanel(listing) {
     sessionStorage.setItem('item', JSON.stringify(listing));
     console.log(listing);
-    window.location.href = "http://localhost:8080/item.html";
+    // window.location.href = "http://localhost:8080/item.html";
+    window.location.href = `http://${ip}:8080/item.html`;
 }
 
 function goToNextPage() {

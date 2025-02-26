@@ -11,7 +11,8 @@ public class MainController {
 
     @GetMapping
     public ModelAndView homePage() {
-        return new ModelAndView("forward:/main.html");
+        return new ModelAndView("redirect:http://" + System.getenv("IP_ADDR") + ":8080/main.html");
     }
+
 
 }

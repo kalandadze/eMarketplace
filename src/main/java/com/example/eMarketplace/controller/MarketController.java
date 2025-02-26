@@ -100,7 +100,7 @@ public class MarketController {
                             .price(price)
                             .build(),
                     photo, email);
-            response.sendRedirect("http://localhost:8080");
+            response.sendRedirect("http://"+System.getenv("IP_ADDR")+":8080");
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
